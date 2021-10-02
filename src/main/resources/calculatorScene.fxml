@@ -14,14 +14,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="387.0" prefWidth="419.0" stylesheets="@calculator.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.miet.testing.Controller.FXController">
     <children>
-        <VBox prefHeight="389.0" prefWidth="419.0" style="-fx-padding: 10px;">
+        <VBox alignment="CENTER" prefHeight="389.0" prefWidth="419.0" style="-fx-padding: 10px;">
             <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                      <TextField fx:id="leftInput" alignment="CENTER_RIGHT" editable="false" onInputMethodTextChanged="#onLeftInputChanged" prefHeight="79.0" prefWidth="320.0">
-                          <font>
-                              <Font size="41.0" />
-                          </font>
+                      <TextField fx:id="leftInput" alignment="CENTER" onInputMethodTextChanged="#onLeftInputChanged" onMouseClicked="#onLeftInputClicked" prefHeight="79.0" prefWidth="320.0">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
@@ -31,7 +28,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </TextArea>
-                  <TextField fx:id="rightInput" onInputMethodTextChanged="#onRightInputChanged" prefHeight="81.0" prefWidth="319.0">
+                  <TextField fx:id="rightInput" alignment="CENTER" onInputMethodTextChanged="#onRightInputChanged" onMouseClicked="#onRightInputClicked" prefHeight="81.0" prefWidth="319.0">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>

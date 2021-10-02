@@ -1,22 +1,35 @@
 package ru.miet.testing.View;
 
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 public class FXView implements CalculatorView
 {
     private static FXView instance;
 
-    private FXView()
-    {}
+    private FXView(TextField leftInput, TextField rightInput)
+    {
+        leftInput.setText("0");
+        rightInput.setText("0");
+    }
+
+    public static FXView initializeInstance(TextField leftInput, TextField rightInput)
+    {
+        if (instance == null)
+        {
+            instance = new FXView(leftInput, rightInput);
+        }
+        return instance;
+    }
 
     public static FXView getInstance()
     {
-        if (instance == null) {
-            instance = new FXView();
-        }
         return instance;
     }
 

@@ -27,7 +27,7 @@ public class MainFX extends Application
     {
         FXMLLoader loader = new FXMLLoader();
 
-        String mainSceneFileName = "/home/lavrentiy/IdeaProjects/TestLab2/src/main/resources/calculatorScene.fxml";
+        String mainSceneFileName = "C:\\Users\\Lavrentiy_Gusev\\Олег\\MIET\\TestPO\\SimpleCalculator\\src\\main\\resources\\calculatorScene.fxml";
 
         URL xmlUrl = null;
         try
@@ -53,23 +53,5 @@ public class MainFX extends Application
             e.printStackTrace();
             System.out.println("Could not load .fxml file!");
         }
-
-        /*primaryStage.setTitle("Hello World!");
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>()
-        {
-
-            @Override
-            public void handle(ActionEvent event)
-            {
-                System.out.println("Hello World!");
-            }
-        });
-
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        primaryStage.setScene(new Scene(root, 300, 250));
-        primaryStage.show();*/
     }
 }

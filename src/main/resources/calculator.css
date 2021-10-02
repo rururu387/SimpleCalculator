@@ -18,3 +18,8 @@
 .text-field{
     -fx-background-color: #E1E1E1;
 }
+
+.text-field:active
+{
+    -fx-border-color: #2fd179;
+}

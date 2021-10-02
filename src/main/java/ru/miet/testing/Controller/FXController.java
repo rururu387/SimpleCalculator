@@ -1,6 +1,7 @@
 package ru.miet.testing.Controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -14,20 +15,32 @@ import ru.miet.testing.View.FXView;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class FXController implements CalculatorPresenter
+public class FXController implements CalculatorPresenter, Initializable
 {
     private CalculatorModel model;
     private CalculatorView view;
     private OperationType currentSelectedOperation;
     private double leftOperand;
     private double rightOperand;
+    private int activeInputNum;
 
     public FXController()
     {
         model = CalculatorModelImpl.getInstance();
-        view = FXView.getInstance();
-        //view.printResult(0, resultArea);
+        activeInputNum = -1;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle)
+    {
+        view = FXView.initializeInstance(leftInput, rightInput);
+        leftOperand = 0;
+        rightOperand = 0;
+        view.printResult(0, resultArea);
+        currentSelectedOperation = OperationType.None;
     }
 
     @FXML
@@ -121,6 +134,8 @@ public class FXController implements CalculatorPresenter
             case Divide -> method = model.getClass().getDeclaredMethod("divide", double.class, double.class);
         }
 
+        method.setAccessible(true);
+
         return method;
     }
 
@@ -185,7 +200,7 @@ public class FXController implements CalculatorPresenter
 
         try
         {
-            result = (double) method.invoke(leftOperand, rightOperand);
+            result = (double) method.invoke(model, leftOperand, rightOperand);
         }
         catch (IllegalArgumentException | IllegalAccessException | InvocationTargetException e)
         {
@@ -278,7 +293,7 @@ public class FXController implements CalculatorPresenter
         }
         catch (NullPointerException | NumberFormatException e)
         {
-            view.displayError("Number \'" + leftStr + "\' is not parsable!");
+            view.displayError("Number '" + leftStr + "' is not parsable!");
         }
 
         setLeftOperand(leftOperand);
@@ -294,9 +309,23 @@ public class FXController implements CalculatorPresenter
         }
         catch (NullPointerException | NumberFormatException e)
         {
-            view.displayError("Number \'" + rightStr + "\' is not parsable!");
+            view.displayError("Number '" + rightStr + "' is not parsable!");
         }
 
         setLeftOperand(leftOperand);
+    }
+
+    @FXML
+    void onLeftInputClicked(MouseEvent event)
+    {
+        /*leftInput.getStyleClass().add("textInput.css");
+        rightInput.getStyleClass().remove("textInput.css");*/
+    }
+
+    @FXML
+    void onRightInputClicked(MouseEvent event)
+    {
+        /*rightInput.getStyleClass().add("textInput.css");
+        leftInput.getStyleClass().remove("textInput.css");*/
     }
 }
