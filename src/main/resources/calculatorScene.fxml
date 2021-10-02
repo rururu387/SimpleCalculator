@@ -2,7 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -18,34 +18,31 @@
             <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                      <TextField fx:id="leftInput" alignment="CENTER" onInputMethodTextChanged="#onLeftInputChanged" onMouseClicked="#onLeftInputClicked" prefHeight="79.0" prefWidth="320.0">
+                      <TextField fx:id="leftInput" alignment="CENTER" onInputMethodTextChanged="#onLeftInputChanged" prefHeight="79.0" prefWidth="320.0">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                       </TextField>
-                  <TextArea fx:id="operationArea" editable="false" prefHeight="200.0" prefWidth="200.0">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </TextArea>
-                  <TextField fx:id="rightInput" alignment="CENTER" onInputMethodTextChanged="#onRightInputChanged" onMouseClicked="#onRightInputClicked" prefHeight="81.0" prefWidth="319.0">
+                  <Label fx:id="operationLabel" focusTraversable="false" text="?">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="rightInput" alignment="CENTER" onInputMethodTextChanged="#onRightInputChanged" prefHeight="81.0" prefWidth="319.0">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </TextField>
-                  <TextArea fx:id="eqSignArea" editable="false" prefHeight="200.0" prefWidth="100.0" text="=">
+                  <Label fx:id="eqSignLabel" focusTraversable="false" text="=">
                      <font>
-                        <Font size="17.0" />
+                        <Font size="18.0" />
                      </font>
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </TextArea>
-                  <TextArea fx:id="resultArea" editable="false" prefHeight="200.0" prefWidth="200.0">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </HBox.margin>
-                  </TextArea>
+                  </Label>
+                  <Label fx:id="resultLabel" focusTraversable="false" minWidth="100.0" prefHeight="81.0" prefWidth="100.0" text="Ans">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </HBox>
                 <GridPane prefHeight="297.0" prefWidth="419.0">
@@ -62,7 +59,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Button fx:id="five" mnemonicParsing="false" onMouseClicked="#onFiveClicked" prefHeight="500.0" prefWidth="500.0" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Button fx:id="five" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#onFiveClicked" prefHeight="500.0" prefWidth="500.0" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <font>
                                 <Font size="30.0" />
                             </font>
@@ -70,7 +67,7 @@
                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                             </GridPane.margin>
                         </Button>
-                        <Button fx:id="two" mnemonicParsing="false" onMouseClicked="#onTwoClicked" prefHeight="500.0" prefWidth="500.0" text="2" GridPane.columnIndex="1">
+                        <Button fx:id="two" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#onTwoClicked" prefHeight="500.0" prefWidth="500.0" text="2" GridPane.columnIndex="1">
                             <font>
                                 <Font size="30.0" />
                             </font>
@@ -78,7 +75,7 @@
                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                             </GridPane.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" text="1" GridPane.rowIndex="1">
+                        <Button focusTraversable="false" mnemonicParsing="false" prefHeight="500.0" prefWidth="500.0" text="1" GridPane.rowIndex="1">
                             <font>
                                 <Font size="30.0" />
                             </font>
@@ -86,7 +83,7 @@
                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                             </GridPane.margin>
                         </Button>
-                        <Button fx:id="four" mnemonicParsing="false" onMouseClicked="#onFourClicked" prefHeight="500.0" prefWidth="500.0" text="4" GridPane.rowIndex="1">
+                        <Button fx:id="four" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#onFourClicked" prefHeight="500.0" prefWidth="500.0" text="4" GridPane.rowIndex="1">
                             <font>
                                 <Font size="30.0" />
                             </font>
@@ -94,7 +91,7 @@
                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                             </GridPane.margin>
                         </Button>
-                        <Button fx:id="minus" mnemonicParsing="false" onMouseClicked="#onMinusClicked" prefHeight="500.0" prefWidth="500.0" text="-" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                        <Button fx:id="minus" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#onMinusClicked" prefHeight="500.0" prefWidth="500.0" text="-" GridPane.columnIndex="3" GridPane.rowIndex="1">
                             <font>
                                 <Font size="30.0" />
                             </font>
@@ -102,7 +99,7 @@
                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                             </GridPane.margin>
                         </Button>
-                        <Button fx:id="plus" mnemonicParsing="false" onMouseClicked="#onPlusClicked" prefHeight="500.0" prefWidth="500.0" text="+" GridPane.columnIndex="3">
+                        <Button fx:id="plus" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#onPlusClicked" prefHeight="500.0" prefWidth="500.0" text="+" GridPane.columnIndex="3">
                             <font>
                                 <Font size="30.0" />
                             </font>
@@ -110,7 +107,7 @@
                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                             </GridPane.margin>
                         </Button>
-                        <Button fx:id="three" mnemonicParsing="false" onMouseClicked="#onThreeClicked" prefHeight="500.0" prefWidth="500.0" text="3" GridPane.columnIndex="2">
+                        <Button fx:id="three" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#onThreeClicked" prefHeight="500.0" prefWidth="500.0" text="3" GridPane.columnIndex="2">
                             <font>
                                 <Font size="30.0" />
                             </font>
@@ -118,7 +115,7 @@
                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                             </GridPane.margin>
                         </Button>
-                        <Button fx:id="six" mnemonicParsing="false" onMouseClicked="#onSixClicked" prefHeight="500.0" prefWidth="500.0" text="6" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Button fx:id="six" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#onSixClicked" prefHeight="500.0" prefWidth="500.0" text="6" GridPane.columnIndex="2" GridPane.rowIndex="1">
                             <font>
                                 <Font size="30.0" />
                             </font>
@@ -126,7 +123,7 @@
                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                             </GridPane.margin>
                         </Button>
-                        <Button fx:id="seven" mnemonicParsing="false" onMouseClicked="#onSevenClicked" prefHeight="500.0" prefWidth="500.0" text="7" GridPane.rowIndex="2">
+                        <Button fx:id="seven" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#onSevenClicked" prefHeight="500.0" prefWidth="500.0" text="7" GridPane.rowIndex="2">
                             <font>
                                 <Font size="30.0" />
                             </font>
@@ -134,7 +131,7 @@
                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                             </GridPane.margin>
                         </Button>
-                        <Button fx:id="eight" mnemonicParsing="false" onMouseClicked="#onEightClicked" prefHeight="500.0" prefWidth="500.0" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Button fx:id="eight" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#onEightClicked" prefHeight="500.0" prefWidth="500.0" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2">
                             <font>
                                 <Font size="30.0" />
                             </font>
@@ -142,7 +139,7 @@
                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                             </GridPane.margin>
                         </Button>
-                        <Button fx:id="nine" mnemonicParsing="false" onMouseClicked="#onNineClicked" prefHeight="500.0" prefWidth="500.0" text="9" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                        <Button fx:id="nine" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#onNineClicked" prefHeight="500.0" prefWidth="500.0" text="9" GridPane.columnIndex="2" GridPane.rowIndex="2">
                             <font>
                                 <Font size="30.0" />
                             </font>
@@ -150,7 +147,7 @@
                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                             </GridPane.margin>
                         </Button>
-                        <Button fx:id="mult" mnemonicParsing="false" onMouseClicked="#onMultiplyClicked" prefHeight="500.0" prefWidth="500.0" text="*" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                        <Button fx:id="mult" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#onMultiplyClicked" prefHeight="500.0" prefWidth="500.0" text="*" GridPane.columnIndex="3" GridPane.rowIndex="2">
                             <font>
                                 <Font size="30.0" />
                             </font>
@@ -158,7 +155,7 @@
                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                             </GridPane.margin>
                         </Button>
-                        <Button fx:id="zero" mnemonicParsing="false" onMouseClicked="#onZeroClicked" prefHeight="500.0" prefWidth="500.0" text="0" GridPane.rowIndex="3">
+                        <Button fx:id="zero" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#onZeroClicked" prefHeight="500.0" prefWidth="500.0" text="0" GridPane.rowIndex="3">
                             <font>
                                 <Font size="30.0" />
                             </font>
@@ -166,7 +163,7 @@
                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                             </GridPane.margin>
                         </Button>
-                        <Button fx:id="equals" mnemonicParsing="false" onMouseClicked="#onEqClicked" prefHeight="500.0" prefWidth="500.0" text="=" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Button fx:id="equals" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#onEqClicked" prefHeight="500.0" prefWidth="500.0" text="=" GridPane.columnIndex="1" GridPane.rowIndex="3">
                             <font>
                                 <Font size="30.0" />
                             </font>
@@ -174,7 +171,7 @@
                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                             </GridPane.margin>
                         </Button>
-                        <Button fx:id="clear" mnemonicParsing="false" onMouseClicked="#onClClicked" prefHeight="500.0" prefWidth="500.0" text="CL" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                        <Button fx:id="clear" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#onClClicked" prefHeight="500.0" prefWidth="500.0" text="CL" GridPane.columnIndex="2" GridPane.rowIndex="3">
                             <font>
                                 <Font size="30.0" />
                             </font>
@@ -182,7 +179,7 @@
                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                             </GridPane.margin>
                         </Button>
-                        <Button fx:id="div" mnemonicParsing="false" onMouseClicked="#onDivideClicked" prefHeight="500.0" prefWidth="500.0" text="/" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                        <Button fx:id="div" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#onDivideClicked" prefHeight="500.0" prefWidth="500.0" text="/" GridPane.columnIndex="3" GridPane.rowIndex="3">
                             <font>
                                 <Font size="30.0" />
                             </font>
@@ -190,7 +187,7 @@
                                 <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                             </GridPane.margin>
                         </Button>
-                        <Button fx:id="one" mnemonicParsing="false" onMouseClicked="#onOneClicked" prefHeight="500.0" prefWidth="500.0" text="1">
+                        <Button fx:id="one" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#onOneClicked" prefHeight="500.0" prefWidth="500.0" text="1">
                             <font>
                                 <Font size="30.0" />
                             </font>

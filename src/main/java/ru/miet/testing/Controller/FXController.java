@@ -3,7 +3,7 @@ package ru.miet.testing.Controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
@@ -39,7 +39,7 @@ public class FXController implements CalculatorPresenter, Initializable
         view = FXView.initializeInstance(leftInput, rightInput);
         leftOperand = 0;
         rightOperand = 0;
-        view.printResult(0, resultArea);
+        view.printResult(0, resultLabel);
         currentSelectedOperation = OperationType.None;
     }
 
@@ -50,13 +50,13 @@ public class FXController implements CalculatorPresenter, Initializable
     private TextField rightInput;
 
     @FXML
-    private TextArea operationArea;
+    private Label operationLabel;
 
     @FXML
-    private TextArea eqSignArea;
+    private Label eqSignLabel;
 
     @FXML
-    private TextArea resultArea;
+    private Label resultLabel;
 
     @FXML
     private Button clear;
@@ -111,11 +111,11 @@ public class FXController implements CalculatorPresenter, Initializable
         currentSelectedOperation = operationType;
         switch (operationType)
         {
-            case None -> view.setOperation("", operationArea);
-            case Sum -> view.setOperation("+", operationArea);
-            case Subtract -> view.setOperation("-", operationArea);
-            case Multiply -> view.setOperation("*", operationArea);
-            case Divide -> view.setOperation("/", operationArea);
+            case None -> view.setOperation("?", operationLabel);
+            case Sum -> view.setOperation("+", operationLabel);
+            case Subtract -> view.setOperation("-", operationLabel);
+            case Multiply -> view.setOperation("*", operationLabel);
+            case Divide -> view.setOperation("/", operationLabel);
         }
     }
 
@@ -148,7 +148,7 @@ public class FXController implements CalculatorPresenter, Initializable
     public void setRightOperand(double value)
     {
         rightOperand = value;
-        view.setRightOperand(String.valueOf(rightOperand), leftInput);
+        view.setRightOperand(String.valueOf(rightOperand), rightInput);
     }
 
     @Override
@@ -178,8 +178,10 @@ public class FXController implements CalculatorPresenter, Initializable
     @FXML
     void onClClicked(MouseEvent event)
     {
-
         setCurrentSelectedOperation(OperationType.None);
+        setLeftOperand(0);
+        setRightOperand(0);
+        view.setResult("Ans", resultLabel);
     }
 
     @FXML
@@ -208,7 +210,7 @@ public class FXController implements CalculatorPresenter, Initializable
             return;
         }
 
-        view.setResult(String.valueOf(result), resultArea);
+        view.setResult(String.valueOf(result), resultLabel);
     }
 
     void concatOperand(short num, short digit)
@@ -226,61 +228,61 @@ public class FXController implements CalculatorPresenter, Initializable
     @FXML
     void onZeroClicked(MouseEvent event)
     {
-        concatOperand(view.addStrToActiveField("0"), (short) 0);
+        concatOperand(view.getFocusedField("0", leftInput, rightInput), (short) 0);
     }
 
     @FXML
     void onOneClicked(MouseEvent event)
     {
-        concatOperand(view.addStrToActiveField("1"), (short) 1);
+        concatOperand(view.getFocusedField("1", leftInput, rightInput), (short) 1);
     }
 
     @FXML
     void onTwoClicked(MouseEvent event)
     {
-        concatOperand(view.addStrToActiveField("2"), (short) 2);
+        concatOperand(view.getFocusedField("2", leftInput, rightInput), (short) 2);
     }
 
     @FXML
     void onThreeClicked(MouseEvent event)
     {
-        concatOperand(view.addStrToActiveField("3"), (short) 3);
+        concatOperand(view.getFocusedField("3", leftInput, rightInput), (short) 3);
     }
 
     @FXML
     void onFourClicked(MouseEvent event)
     {
-        concatOperand(view.addStrToActiveField("4"), (short) 4);
+        concatOperand(view.getFocusedField("4", leftInput, rightInput), (short) 4);
     }
 
     @FXML
     void onFiveClicked(MouseEvent event)
     {
-        concatOperand(view.addStrToActiveField("5"), (short) 5);
+        concatOperand(view.getFocusedField("5", leftInput, rightInput), (short) 5);
     }
 
     @FXML
     void onSixClicked(MouseEvent event)
     {
-        concatOperand(view.addStrToActiveField("6"), (short) 6);
+        concatOperand(view.getFocusedField("6", leftInput, rightInput), (short) 6);
     }
 
     @FXML
     void onSevenClicked(MouseEvent event)
     {
-        concatOperand(view.addStrToActiveField("7"), (short) 7);
+        concatOperand(view.getFocusedField("7", leftInput, rightInput), (short) 7);
     }
 
     @FXML
     void onEightClicked(MouseEvent event)
     {
-        concatOperand(view.addStrToActiveField("8"), (short) 8);
+        concatOperand(view.getFocusedField("8", leftInput, rightInput), (short) 8);
     }
 
     @FXML
     void onNineClicked(MouseEvent event)
     {
-        concatOperand(view.addStrToActiveField("9"), (short) 9);
+        concatOperand(view.getFocusedField("9", leftInput, rightInput), (short) 9);
     }
 
     @FXML
@@ -313,19 +315,5 @@ public class FXController implements CalculatorPresenter, Initializable
         }
 
         setLeftOperand(leftOperand);
-    }
-
-    @FXML
-    void onLeftInputClicked(MouseEvent event)
-    {
-        /*leftInput.getStyleClass().add("textInput.css");
-        rightInput.getStyleClass().remove("textInput.css");*/
-    }
-
-    @FXML
-    void onRightInputClicked(MouseEvent event)
-    {
-        /*rightInput.getStyleClass().add("textInput.css");
-        leftInput.getStyleClass().remove("textInput.css");*/
     }
 }

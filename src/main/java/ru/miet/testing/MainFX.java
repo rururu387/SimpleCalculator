@@ -27,7 +27,7 @@ public class MainFX extends Application
     {
         FXMLLoader loader = new FXMLLoader();
 
-        String mainSceneFileName = "C:\\Users\\Lavrentiy_Gusev\\Олег\\MIET\\TestPO\\SimpleCalculator\\src\\main\\resources\\calculatorScene.fxml";
+        String mainSceneFileName = "/home/lavrentiy/IdeaProjects/TestLab2/src/main/resources/calculatorScene.fxml";
 
         URL xmlUrl = null;
         try

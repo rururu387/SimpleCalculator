@@ -1,13 +1,6 @@
 package ru.miet.testing.View;
 
-import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-
-import java.net.URL;
-import java.util.ResourceBundle;
+import javafx.scene.control.*;
 
 public class FXView implements CalculatorView
 {
@@ -34,9 +27,9 @@ public class FXView implements CalculatorView
     }
 
     @Override
-    public void printResult(double result, TextArea resultArea)
+    public void printResult(double result, Label resultLabel)
     {
-        resultArea.setText(String.valueOf(result));
+        resultLabel.setText(String.valueOf(result));
     }
 
     @Override
@@ -58,15 +51,15 @@ public class FXView implements CalculatorView
         return rightInput.getText();
     }
 
-    public void setOperation(String str, TextArea operationArea)
+    public void setOperation(String str, Label operationLabel)
     {
-        operationArea.setText(str);
+        operationLabel.setText(str);
     }
 
     @Override
-    public void setResult(String str, TextArea resultArea)
+    public void setResult(String str, Label resultLabel)
     {
-        resultArea.setText(str);
+        resultLabel.setText(str);
     }
 
     @Override
@@ -94,14 +87,13 @@ public class FXView implements CalculatorView
     }
 
     @Override
-    public short addStrToActiveField(String str, TextField... fields)
+    public short getFocusedField(String str, TextField... fields)
     {
         short counter = 0;
         for (var field : fields)
         {
             if (field.isFocused())
             {
-                field.setText(field.getText() + str);
                 return counter;
             }
             counter++;

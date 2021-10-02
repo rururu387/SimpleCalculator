@@ -19,7 +19,7 @@
     -fx-background-color: #E1E1E1;
 }
 
-.text-field:active
+.text-field:focused
 {
     -fx-border-color: #2fd179;
 }
