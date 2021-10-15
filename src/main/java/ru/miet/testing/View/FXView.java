@@ -8,8 +8,8 @@ public class FXView implements CalculatorView
 
     private FXView(TextField leftInput, TextField rightInput)
     {
-        leftInput.setText("0");
-        rightInput.setText("0");
+        leftInput.setText("");
+        rightInput.setText("");
     }
 
     public static FXView initializeInstance(TextField leftInput, TextField rightInput)
@@ -35,7 +35,8 @@ public class FXView implements CalculatorView
     @Override
     public void displayError(String message)
     {
-        Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.YES);
+        Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.OK);
+        alert.getDialogPane().lookupButton(ButtonType.OK).setId("alertOkButton");
         alert.showAndWait();
     }
 
@@ -75,6 +76,17 @@ public class FXView implements CalculatorView
     }
 
     @Override
+    public int getCaretPosition(TextInputControl field)
+    {
+        return field.getCaretPosition();
+    }
+
+    public void setCaretPosition(TextInputControl field, int position)
+    {
+        field.positionCaret(position);
+    }
+
+    @Override
     public void setLeftOperand(String str, TextField leftInput)
     {
         leftInput.setText(str);
@@ -87,7 +99,7 @@ public class FXView implements CalculatorView
     }
 
     @Override
-    public short getFocusedField(String str, TextField... fields)
+    public short getFocusedField(TextField... fields)
     {
         short counter = 0;
         for (var field : fields)

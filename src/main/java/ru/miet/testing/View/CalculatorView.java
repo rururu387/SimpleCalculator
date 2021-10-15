@@ -1,7 +1,9 @@
 package ru.miet.testing.View;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputControl;
 
 public interface CalculatorView {
 
@@ -36,9 +38,13 @@ public interface CalculatorView {
 
     String getRightOperand(TextField rightInput);
 
+    int getCaretPosition(TextInputControl field);
+
+    void setCaretPosition(TextInputControl field, int position);
+
     void setLeftOperand(String str, TextField leftInput);
 
     void setRightOperand(String str, TextField rightInput);
 
-    short getFocusedField(String str, TextField... fields);
+    short getFocusedField(TextField... fields);
 }
